@@ -1,5 +1,6 @@
 # This is an example .goreleaser.yml file with some sane defaults.
 # Make sure to check the documentation at http://goreleaser.com
+project_name: reactoragent
 before:
   hooks:
     # You may remove this if you don't use go modules.
@@ -7,7 +8,10 @@ before:
     # you may remove this if you don't need go generate
     - go generate ./...
 builds:
-  - env:
+  - main: ./cmd/daemon/daemon.go
+    id: daemon
+    binary: daemon
+    env:
       - CGO_ENABLED=0
     goos:
       - linux
