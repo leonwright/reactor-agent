@@ -50,8 +50,8 @@ brews:
     # Default is empty.
     install: |-
       bin.install "daemon"
-      etc.mkpath
-      etc.install "config/example.conf"
+      etc.mkpath "reactoragent"
+      etc1.install "config/example.conf"
 nfpms:
   - file_name_template: '{{ .ProjectName }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}'
     homepage: https://nerderbur.tech
