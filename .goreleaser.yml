@@ -38,3 +38,14 @@ changelog:
     exclude:
       - '^docs:'
       - '^test:'
+brews:
+  - tap:
+      owner: leonwright
+      name: homebrew-tap
+    folder: Formula
+    homepage:  https://nerderbut.tech
+    description: Supercharge your development server.
+    # So you can `brew test` your formula.
+    # Default is empty.
+    install: |
+      bin.install "daemon"
