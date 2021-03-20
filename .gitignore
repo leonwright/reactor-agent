@@ -3,6 +3,7 @@
 /.container-*
 /.dockerfile-*
 config/*.conf
+!config/example.conf
 
 
 
