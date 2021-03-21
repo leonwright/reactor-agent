@@ -45,7 +45,7 @@ brews:
     folder: Formula
     homepage:  https://nerderbur.tech
     description: Supercharge your development server.
-    caveats: "Edit the .conf file in /usr/local/etc/reactoragent"
+    caveats: "1. Edit the example.conf file in /usr/local/etc/reactoragent\n2. Rename example.conf to default.conf"
     # So you can `brew test` your formula.
     # Default is empty.
     install: |-
