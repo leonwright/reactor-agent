@@ -69,7 +69,7 @@ brews:
 
             <key>ProgramArguments</key>
             <array>
-                <string>/opt/homebrew/bin/daemon</string>
+                <string>/usr/local/bin/daemon</string>
             </array>
 
             <key>StandardOutPath</key>
