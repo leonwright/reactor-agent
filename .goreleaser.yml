@@ -62,7 +62,7 @@ nfpms:
     vendor: Nerderbur
     contents:
       - src: ./config/example.conf
-        dst: /etc/reactoragent
+        dst: /etc/reactoragent/example.conf
     formats:
     - apk
     - deb
