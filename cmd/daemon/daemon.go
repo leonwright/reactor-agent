@@ -25,7 +25,6 @@ func run(ctx context.Context, c *config.Config, out io.Writer) error {
 		case <-time.Tick(c.DNSUpdateInterval):
 			var ip string = network.GetCurrentIP()
 			network.UpdateDevDNS(c, ip)
-			log.Println("Updating Azure DNS...")
 		}
 	}
 }

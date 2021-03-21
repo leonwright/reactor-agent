@@ -127,6 +127,9 @@ func GetDNSRecord(c *config.Config) {
 }
 
 func UpdateDevDNS(c *config.Config, ip string) {
+	log.Printf("Running Method UpdatedDevDNS with IP %s", ip)
+	defer log.Printf("Exit Method UpdatedDevDNS.")
+
 	resourceGroup := "networking"
 	zoneName := "nerderbur.tech"
 
