@@ -62,7 +62,7 @@ brews:
             <string>tech.nerderbur.reactoragent</string>
             <key>ProgramArguments</key>
             <array>
-                <string>daemon</string>
+                <string>/opt/homebrew/bin/daemon</string>
             </array>
             <key>KeepAlive</key>
             <true/>
