@@ -53,6 +53,27 @@ brews:
       etc.mkpath
       mkdir "#{etc}/reactorapp"
       etc.install "config/example.conf" => "reactorapp/example.conf"
+    plist: |
+      <?xml version="1.0" encoding="UTF-8"?>
+      <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+      <plist version="1.0">
+        <dict>
+            <key>Label</key>
+            <string>tech.nerderbur.reactoragent</string>
+            <key>ProgramArguments</key>
+            <array>
+                <string>daemon</string>
+            </array>
+            <key>KeepAlive</key>
+            <true/>
+            <key>StandardOutPath</key>
+            <string>/var/log/reactoragent.log</string>
+            <key>StandardErrorPath</key>
+            <string>/var/log/reactoragent.log</string>
+            <key>Debug</key>
+            <true/>
+        </dict>
+      </plist>
 nfpms:
   - file_name_template: '{{ .ProjectName }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}'
     homepage: https://nerderbur.tech
