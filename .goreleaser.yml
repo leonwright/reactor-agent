@@ -59,19 +59,24 @@ brews:
       <plist version="1.0">
         <dict>
             <key>Label</key>
-            <string>tech.nerderbur.reactoragent</string>
+            <string>com.nerderbur.tech</string>
+
+            <key>RunAtLoad</key>
+            <true/>
+
+            <key>KeepAlive</key>
+            <true/>
+
             <key>ProgramArguments</key>
             <array>
                 <string>/opt/homebrew/bin/daemon</string>
             </array>
-            <key>KeepAlive</key>
-            <true/>
+
             <key>StandardOutPath</key>
-            <string>/var/log/reactoragent.log</string>
+            <string>/tmp/log/reactoragent.log</string>
+
             <key>StandardErrorPath</key>
-            <string>/var/log/reactoragent.log</string>
-            <key>Debug</key>
-            <true/>
+            <string>/tmp/log/reactoragent.log</string>
         </dict>
       </plist>
 nfpms:
