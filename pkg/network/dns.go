@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"strings"
 
 	"github.com/Azure/azure-sdk-for-go/profiles/latest/dns/mgmt/dns"
 	"github.com/Azure/go-autorest/autorest"
@@ -154,14 +155,13 @@ func UpdateDevDNS(c *config.Config, ip string) {
 		},
 	}
 
-	_, err = rc.CreateOrUpdate(context.Background(), resourceGroup, zoneName, "dev", dns.A, *arecordparams, "", "")
-	if err != nil {
-		log.Fatalf("Error creating dev ARecord: %s, %v", zoneName, err)
-		return
-	}
-	_, err = rc.CreateOrUpdate(context.Background(), resourceGroup, zoneName, "*.dev", dns.A, *arecordparams, "", "")
-	if err != nil {
-		log.Fatalf("Error updating *.dev ARecord: %s, %v", zoneName, err)
-		return
+	s := strings.Split(c.DNSARecordNames, ",")
+
+	for _, record := range s {
+		_, err = rc.CreateOrUpdate(context.Background(), resourceGroup, zoneName, record, dns.A, *arecordparams, "", "")
+		if err != nil {
+			log.Fatalf("Error creating dev ARecord: %s, %v", zoneName, err)
+			return
+		}
 	}
 }
