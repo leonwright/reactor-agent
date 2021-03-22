@@ -24,14 +24,13 @@ type Config struct {
 func (c *Config) Init(args []string) error {
 	var defaultConfigPath string
 	if runtime.GOOS == "darwin" {
-		defaultConfigPath = "/usr/local/etc/reactorapp/default.conf"
+		defaultConfigPath = "/usr/local/etc/reactoragent.conf"
 	} else if runtime.GOOS == "linux" {
 		defaultConfigPath = "/etc/reactoragent/default.conf"
 	}
 
 	flags := flag.NewFlagSet(args[0], flag.ExitOnError)
 	flags.String(flag.DefaultConfigFlagname, defaultConfigPath, "Path to config file")
-
 
 	var (
 		dnsUpdateInterval   = flags.Duration("dns_update_interval", defaultTick, "Ticking interval")
