@@ -50,8 +50,11 @@ brews:
     # Default is empty.
     install: |-
       bin.install "daemon"
-      prefix.install "config/example.conf" => "reactoragent.conf"
-      etc.install_symlink prefix/"reactoragent.conf"
+    post_install: |
+      if !(File.exist?((etc/"reactoragent.conf"))) then
+        prefix.install "config/example.conf" => "reactoragent.conf"
+        etc.install_symlink prefix/"reactoragent.conf"
+      end
     plist: |
       <?xml version="1.0" encoding="UTF-8"?>
       <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
