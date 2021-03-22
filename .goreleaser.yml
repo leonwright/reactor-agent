@@ -45,7 +45,7 @@ brews:
     folder: Formula
     homepage:  https://nerderbur.tech
     description: Supercharge your development server.
-    caveats: "1. Edit the default.conf file in #[prefix]\n"
+    caveats: "1. Edit the default.conf file in #{prefix}\n"
     # So you can `brew test` your formula.
     # Default is empty.
     install: |-
