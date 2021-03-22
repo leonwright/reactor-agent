@@ -49,7 +49,7 @@ brews:
     # So you can `brew test` your formula.
     # Default is empty.
     install: |-
-      prefix.install Dir[*]
+      prefix.install Dir["*"]
     post_install: |
       if !(File.exist?((etc/"reactoragent.conf"))) then
         etc.mkpath
