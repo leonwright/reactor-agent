@@ -45,14 +45,13 @@ brews:
     folder: Formula
     homepage:  https://nerderbur.tech
     description: Supercharge your development server.
-    caveats: "1. Edit the example.conf file in /usr/local/etc/reactoragent\n2. Rename example.conf to default.conf"
+    caveats: "1. Edit the default.conf file in #[prefix]\n"
     # So you can `brew test` your formula.
     # Default is empty.
     install: |-
       bin.install "daemon"
-      etc.mkpath
-      mkdir "#{etc}/reactorapp"
-      etc.install "config/example.conf" => "reactorapp/example.conf"
+      prefix.install "config/example.conf" => "reactoragent.conf"
+      etc.install_symlink prefix/"reactoragent.conf"
     plist: |
       <?xml version="1.0" encoding="UTF-8"?>
       <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">

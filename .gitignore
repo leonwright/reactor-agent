@@ -4,6 +4,7 @@
 /.dockerfile-*
 config/*.conf
 !config/example.conf
+!config/default.conf
 
 
 
