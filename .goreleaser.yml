@@ -49,10 +49,11 @@ brews:
     # So you can `brew test` your formula.
     # Default is empty.
     install: |-
-      bin.install "daemon"
+      prefix.install Dir[*]
     post_install: |
-      if !(File.exist?((prefix/"reactoragent.conf"))) then
-        prefix.install "config/example.conf" => "reactoragent.conf"
+      if !(File.exist?((etc/"reactoragent.conf"))) then
+        etc.mkpath
+        etc.install "config/example.conf" => "reactoragent.conf"
       end
     plist: |
       <?xml version="1.0" encoding="UTF-8"?>
