@@ -51,9 +51,8 @@ brews:
     install: |-
       bin.install "daemon"
     post_install: |
-      if !(File.exist?((etc/"reactoragent.conf"))) then
+      if !(File.exist?((prefix/"reactoragent.conf"))) then
         prefix.install "config/example.conf" => "reactoragent.conf"
-        etc.install_symlink prefix/"reactoragent.conf"
       end
     plist: |
       <?xml version="1.0" encoding="UTF-8"?>
@@ -71,7 +70,9 @@ brews:
 
             <key>ProgramArguments</key>
             <array>
-                <string>/usr/local/bin/daemon</string>
+                <string>#{bin}/daemon</string>
+                <string>-config</string>
+                <string>#{prefix}/reactoragent.conf</string>
             </array>
 
             <key>StandardOutPath</key>
