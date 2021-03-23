@@ -18,6 +18,10 @@ func run(ctx context.Context, c *config.Config, out io.Writer) error {
 	c.Init(os.Args)
 	log.SetOutput(out)
 
+	// Startup Functions
+	ip := network.GetCurrentIP()
+	network.UpdateDevDNS(c, ip)
+
 	for {
 		select {
 		case <-ctx.Done():
