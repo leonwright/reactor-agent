@@ -104,6 +104,7 @@ nfpms:
 snapcrafts:
   - id: reactoragent
     publish: true
+    description: Reactor Agent is a simple daemon application that instantly transforms your server into a development environment with all the tools you need to instantly start developing applications from anywhere.
     summary: Supercharge your cloud development environment.
     grade: stable
     license: MIT
