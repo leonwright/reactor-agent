@@ -118,6 +118,6 @@ snapcrafts:
       drumroll:
         plugs: ["network"]
         daemon: simple
-        command: daemon
+        command: cmd/daemon/daemon
         args: -config /etc/reactoragent/default.conf
         restart_condition: "always"
