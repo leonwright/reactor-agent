@@ -101,3 +101,17 @@ nfpms:
     - git
     recommends:
     - golang
+snapcrafts:
+  - id: reactoragent
+    publish: true
+    summary: Supercharge your cloud development environment.
+    grade: stable
+    license: MIT
+    base: core18
+    extra_files:
+      - source: ./config/example.conf
+        destination: /etc/reactoragent/default.conf
+        mode: 0755
+    daemon: reactoragent
+    args: -config /etc/reactoragent/default.conf
+    restart_condition: "always"
