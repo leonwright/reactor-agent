@@ -116,7 +116,7 @@ snapcrafts:
     apps:
       # The name of the app must be the same name as the binary built or the snapcraft name.
       drumroll:
-        plugs: ["network"]
+        plugs: ["network", "system-files"]
         daemon: simple
         command: ./daemon
         args: -config /etc/reactoragent/default.conf
