@@ -5,6 +5,7 @@ import (
 	"log"
 	"os"
 
+	"github.com/leonwright/devhelper/pkg/docker"
 	"github.com/leonwright/devhelper/pkg/generator"
 	"github.com/urfave/cli/v2"
 )
@@ -17,14 +18,12 @@ func main() {
 		Usage: "instantly create development databases!",
 	}
 
-	app.Flags = []cli.Flag{
-		&cli.StringFlag{
-			Name:    "name",
-			Aliases: []string{"n"},
-			Usage:   "the name for the database",
+	nameFlag := &cli.StringFlag{
+		Name:    "name",
+		Aliases: []string{"n"},
+		Usage:   "the name for the database",
 
-			Destination: &databaseName,
-		},
+		Destination: &databaseName,
 	}
 
 	app.Commands = []*cli.Command{
@@ -40,8 +39,14 @@ func main() {
 						if databaseName == "" {
 							databaseName = generator.GenerateCodeName()
 						}
-						fmt.Println("codename:", databaseName)
+						err := docker.CreateDB(databaseName, "mongo")
+						if err != nil {
+							fmt.Errorf("There was an error creating the database: %v", err)
+						}
 						return nil
+					},
+					Flags: []cli.Flag{
+						nameFlag,
 					},
 				},
 			},
@@ -51,7 +56,14 @@ func main() {
 			Aliases: []string{"d"},
 			Usage:   "delete a database",
 			Action: func(c *cli.Context) error {
+				if databaseName == "" {
+					databaseName = generator.GenerateCodeName()
+				}
+				fmt.Println("deleting:", databaseName)
 				return nil
+			},
+			Flags: []cli.Flag{
+				nameFlag,
 			},
 		},
 	}

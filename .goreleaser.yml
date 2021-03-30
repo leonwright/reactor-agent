@@ -46,6 +46,10 @@ brews:
     homepage:  https://nerderbur.tech
     description: Supercharge your development server.
     caveats: "1. Edit the default.conf file in #{prefix}\n"
+    skip_upload: auto
+    # Packages your package depends on.
+    dependencies:
+      - name: docker
     # So you can `brew test` your formula.
     # Default is empty.
     install: |-
@@ -116,7 +120,7 @@ snapcrafts:
     apps:
       # The name of the app must be the same name as the binary built or the snapcraft name.
       drumroll:
-        plugs: ["network", "system-files"]
+        plugs: ["network"]
         daemon: simple
         command: ./daemon
         args: -config /etc/reactoragent/default.conf

@@ -2,6 +2,7 @@ package docker
 
 import (
 	"context"
+	"fmt"
 	"io"
 	"os"
 
@@ -11,6 +12,11 @@ import (
 	"github.com/docker/docker/pkg/stdcopy"
 	v1 "github.com/opencontainers/image-spec/specs-go/v1"
 )
+
+func CreateDB(name, dbType string) error {
+	fmt.Printf("Creating Database %s \nDatabase Type: %s\n", name, dbType)
+	return nil
+}
 
 func CreateMongoDB() {
 	ctx := context.Background()
